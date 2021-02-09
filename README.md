@@ -1,6 +1,6 @@
 # Awin PHP
 
-![CI](https://github.com/encreinformatique/reinerouge/workflows/CI/badge.svg)
+![CI](https://github.com/encreinformatique/awin-php/workflows/CI/badge.svg)
 
 This is a fork from [yuzu-co/awin-php](https://github.com/yuzu-co/awin-php)
 While the original codebase supported PHP 5.6, I decided to drop it and PHP 7.0 to 7.1.
