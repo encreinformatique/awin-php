@@ -2,6 +2,7 @@
 
 namespace Yuzu\Awin;
 
+use GuzzleHttp\ClientInterface as GuzzleClientInterface;
 use Yuzu\Awin\Http\Response;
 use Yuzu\Awin\Request\GetAccountDefinition;
 use Yuzu\Awin\Request\GetCommissionGroupsDefinition;
@@ -16,24 +17,25 @@ use GuzzleHttp\Client as GuzzleClient;
  *
  * @author Jonathan Martin <john@yuzu.co>
  */
-class Client
+class Client implements ClientInterface
 {
-    const AWIN_API_ENDPOINT = 'https://api.awin.com';
+    public const AWIN_API_ENDPOINT = 'https://api.awin.com';
 
+    /** @var string $apiToken */
     private $apiToken;
 
     protected $httpClient;
 
     /**
      * Constructor.
-     * @param $apiToken
+     * @param string $apiToken
      */
-    public function __construct($apiToken)
+    public function __construct(string $apiToken)
     {
         $this->apiToken = $apiToken;
     }
 
-    public function getClient()
+    public function getClient(): GuzzleClientInterface
     {
         if (empty($this->httpClient)) {
             $this->httpClient = new GuzzleClient([
@@ -41,11 +43,11 @@ class Client
                 'headers' => ['Authorization' => sprintf('Bearer %s', $this->apiToken)]
             ]);
         }
-        
+
         return $this->httpClient;
     }
 
-    private function send(RequestDefinitionInterface $definition)
+    private function send(RequestDefinitionInterface $definition): Response
     {
         $response = $this->getClient()->request(
             $definition->getMethod(),
@@ -63,18 +65,18 @@ class Client
      * @param array $options
      * @return Response
      */
-    public function getAccounts(array $options = [])
+    public function getAccounts(array $options = []): Response
     {
         return $this->send(new GetAccountDefinition($options));
     }
 
     /**
      * @doc http://wiki.awin.com/index.php/API_get_programmes
-     * @param $publisherId
+     * @param int $publisherId
      * @param array $options
      * @return Http\Response
      */
-    public function getProgrammes($publisherId, array $options = [])
+    public function getProgrammes($publisherId, array $options = []): Response
     {
         $options['publisherId'] = $publisherId;
 
@@ -83,11 +85,11 @@ class Client
 
     /**
      * @doc http://wiki.awin.com/index.php/API_get_programmedetails
-     * @param $publisherId
+     * @param int $publisherId
      * @param array $options
      * @return Response
      */
-    public function getProgrammeDetail($publisherId, array $options = [])
+    public function getProgrammeDetail($publisherId, array $options = []): Response
     {
         $options['publisherId'] = $publisherId;
 
@@ -96,11 +98,11 @@ class Client
 
     /**
      * @doc http://wiki.awin.com/index.php/API_get_commissiongroups
-     * @param $publisherId
+     * @param int $publisherId
      * @param array $options
      * @return Response
      */
-    public function getCommissionGroups($publisherId, array $options = [])
+    public function getCommissionGroups($publisherId, array $options = []): Response
     {
         $options['publisherId'] = $publisherId;
 
@@ -109,11 +111,11 @@ class Client
 
     /**
      * @doc http://wiki.awin.com/index.php/API_get_transactions_list
-     * @param $publisherId
+     * @param int $publisherId
      * @param array $options
      * @return Http\Response
      */
-    public function getTransactions($publisherId, array $options = [])
+    public function getTransactions($publisherId, array $options = []): Response
     {
         $options['publisherId'] = $publisherId;
 
