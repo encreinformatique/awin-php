@@ -2,7 +2,7 @@
 
 namespace Yuzu\Awin\Tests\Units\Request;
 
-use mageekguy\atoum;
+use atoum\atoum;
 
 class GetTransactionsDefinition extends atoum\test
 {

@@ -2,7 +2,7 @@
 
 namespace Yuzu\Awin\Tests\Units\Request;
 
-use mageekguy\atoum;
+use atoum\atoum;
 use Yuzu\Awin\Enum\RelationshipTypeEnum;
 
 class GetProgrammesDefinition extends atoum\test

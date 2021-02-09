@@ -2,7 +2,7 @@
 
 namespace Yuzu\Awin\Tests\Units\Request;
 
-use mageekguy\atoum;
+use atoum\atoum;
 
 class GetReportsAdvertiserDefinition extends atoum\test
 {
@@ -37,7 +37,7 @@ class GetReportsAdvertiserDefinition extends atoum\test
         ;
     }
 
-    
+
 
     public function testConstructWithAllParams()
     {
