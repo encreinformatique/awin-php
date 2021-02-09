@@ -28,9 +28,8 @@ $client = new Yuzu\Awin\Client($apiToken);
 ## Tests
 
 ```php
-php composer tests
+php composer test
 ```
-
 
 ## TODO
 
