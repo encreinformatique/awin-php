@@ -1,6 +1,6 @@
 <?php
 
-use \mageekguy\atoum;
+use atoum\atoum;
 
 $report = $script->addDefaultReport();
 

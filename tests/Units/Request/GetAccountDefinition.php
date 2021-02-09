@@ -2,12 +2,12 @@
 
 namespace Yuzu\Awin\Tests\Units\Request;
 
-use mageekguy\atoum;
+use atoum\atoum;
 use Yuzu\Awin\Enum\AccountTypeEnum;
 
 class GetAccountDefinition extends atoum\test
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $this
             ->given(
@@ -21,7 +21,7 @@ class GetAccountDefinition extends atoum\test
         ;
     }
 
-    public function testConstructWithParams()
+    public function testConstructWithParams(): void
     {
         $this
             ->given(
@@ -35,7 +35,7 @@ class GetAccountDefinition extends atoum\test
         ;
     }
 
-    public function testConstructWithWrongParams()
+    public function testConstructWithWrongParams(): void
     {
         $this
             ->exception(
